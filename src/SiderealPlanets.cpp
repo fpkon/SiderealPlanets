@@ -316,9 +316,9 @@ boolean SiderealPlanets::setLocalTime(int hours, int minutes, float seconds) {
   if (minutes < 0 || minutes > 59) return false;
   if (seconds < 0. || seconds > 59.999999999) return false;
   // if doAutoDST was set to do, we just did it anyway
-  GMThour = hours - TimeZoneOffset;
-  if (useDST) GMThour -= 1;
-  return setGMTtime(inRange24(GMThour), minutes, seconds);
+  hours = hours - TimeZoneOffset;
+  if (useDST) hours -= 1;
+  return setGMTtime(inRange24(hours), minutes, seconds);
 }
 
 double SiderealPlanets::getLatitude(void) {
